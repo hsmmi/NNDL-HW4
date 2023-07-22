@@ -16,11 +16,7 @@ class Attention(Layer):
         super(Attention, self).build(input_shape)
 
     def call(self, x):
-        et = K.squeeze(K.tanh(K.dot(x, self.W) + self.b), axis=-1)
-        at = K.softmax(et, axis=1)
-        at = K.expand_dims(at, axis=-1)
-        output = x * at
+        e = K.tanh(K.dot(x, self.W) + self.b)
+        a = K.softmax(e, axis=1)
+        output = x * a
         return K.sum(output, axis=1)
-
-    def compute_output_shape(self, input_shape):
-        return (input_shape[0], input_shape[-1])
