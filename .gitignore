@@ -1,0 +1,5 @@
+# Ignore Dataset path
+Dataset/
+
+# Ignore the .DS_Store file
+.DS_Store
